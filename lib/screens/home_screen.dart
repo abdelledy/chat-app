@@ -1,13 +1,63 @@
+import 'package:chat_app/widgets/category_selector.dart';
+import 'package:chat_app/widgets/favorite_contacts.dart';
 import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget {
+class HomeScreen extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      backgroundColor: Theme.of(context).primaryColor,
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.menu),
+          iconSize: 30.0,
+          color: Colors.white,
+          onPressed: () {},
+        ),
+        title: Text(
+          'Chats',
+          style: TextStyle(
+            fontSize: 28.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+        elevation: 0.0,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.search),
+            iconSize: 30.0,
+            color: Colors.white,
+            onPressed: () {},
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
+          CategorySelector(),
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                color: Theme.of(context).accentColor,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30.0),
+                  topRight: Radius.circular(30.0),
+                ),
+              ),
+              child: Column(
+                children: [
+                  FavoriteContacts(),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
